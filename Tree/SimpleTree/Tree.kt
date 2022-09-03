@@ -14,10 +14,9 @@ class TreeNode<T>(val value: T) { // the val in class constructor makes value a 
     }
 
     fun visitLevelFirst(visit: (TreeNode<T>) -> Unit) { //Level traversal of tree
-        visit(this)
+        
         val queue = ArrayDeque<TreeNode<T>>()
-        children.forEach { queue.addFirst(it) }
-        var node: TreeNode<T>? = queue.removeLastOrNull()
+        var node: TreeNode<T>? = this
 
         while (node != null) {
             visit(node)
@@ -37,10 +36,9 @@ class TreeNode<T>(val value: T) { // the val in class constructor makes value a 
     fun printEachLevel() { //to print each level of the tree in a seprate line.
         val queue = ArrayDeque<TreeNode<T>>()
         queue.addFirst(this)
-        var nodesInCurrentLevel: Int
 
         while (queue.isNotEmpty()) {
-            nodesInCurrentLevel = queue.size
+           var nodesInCurrentLevel = queue.size
 
             while (nodesInCurrentLevel > 0) {
                 val node = queue.removeLast()
