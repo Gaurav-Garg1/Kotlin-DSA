@@ -40,12 +40,10 @@ class TreeNode<T>(val value: T) { // the val in class constructor makes value a 
         while (queue.isNotEmpty()) {
            var nodesInCurrentLevel = queue.size
 
-            while (nodesInCurrentLevel > 0) {
+            repeat (nodesInCurrentLevel) {
                 val node = queue.removeLast()
-                if(nodesInCurrentLevel != 1) print("${node.value}--") else print(node.value)
-
+                if(nodesInCurrentLevel-1 != it) print("${node.value}--") else print(node.value)
                 node.children.forEach { queue.addFirst(it) }
-                nodesInCurrentLevel--
             }
             println()
         }
